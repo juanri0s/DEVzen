@@ -1,7 +1,7 @@
 {
-  "name": "at-home",
+  "name": "plist",
   "version": "1.0.0",
-  "description": "find your home",
+  "description": "playlist metadata",
   "author": "Juan Rios <juan.rios.28@gmail.com>",
   "private": true,
   "scripts": {
@@ -14,6 +14,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "fish-ui": "^1.2.8",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

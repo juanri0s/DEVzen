@@ -1,6 +1,7 @@
 <template>
   <div>
     <div> {{ msg }} </div>
+    <fish-button type="primary">Testing</fish-button>
   </div>
 </template>
 
