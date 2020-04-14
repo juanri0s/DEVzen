@@ -1,5 +1,16 @@
 <template>
   <div>
+    <img
+      v-if=image
+      :src=image
+      alt="replace"
+    >
+    <img
+      v-else
+      src="../assets/dev_logo.png"
+      alt="replace"
+      width="300"
+      height="300">
     <a :href=url tabindex="1">
       <h2>{{ title }} </h2>
     </a>
@@ -11,7 +22,7 @@
 <script>
 export default {
   name: 'ArticleCard',
-  props: ['url', 'title', 'author', 'description'],
+  props: ['image', 'url', 'title', 'author', 'description'],
   data() {
     return { };
   },
