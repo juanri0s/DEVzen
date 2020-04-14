@@ -1,13 +1,17 @@
 <template>
   <div>
-    <h2>{{ title }} </h2>
+    <a :href=url tabindex="1">
+      <h2>{{ title }} </h2>
+    </a>
+    <p>{{ description }}</p>
+    author: {{ author }}
   </div>
 </template>
 
 <script>
 export default {
   name: 'ArticleCard',
-  props: ['title'],
+  props: ['url', 'title', 'author', 'description'],
   data() {
     return { };
   },
