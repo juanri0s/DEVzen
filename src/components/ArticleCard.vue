@@ -1,19 +1,15 @@
 <template>
   <div>
-    <h1>{{ message }}</h1>
+    <h2>{{ title }} </h2>
   </div>
 </template>
 
 <script>
 export default {
   name: 'ArticleCard',
-  props: ['message'],
+  props: ['title'],
   data() {
     return { };
-  },
-  mounted() {
-  },
-  created() {
   },
 };
 </script>

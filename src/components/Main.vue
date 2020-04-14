@@ -2,11 +2,10 @@
   <div>
     <h1 v-if="loading"> loading... </h1>
     <h1 v-if="error"> {{ error }} </h1>
-    <p v-if="posts"> {{ posts }} </p>
-    <div>
-      <p> here </p>
-      <article-card :message=message />
-    </div>
+    <article-card
+      v-for="post in posts" :key="post.id"
+      :title=post.title
+    />
     <fish-button type="primary" v-on:click="getPosts">load more</fish-button>
   </div>
 </template>
@@ -22,24 +21,19 @@ export default {
   },
   data() {
     return {
-      message: 'hello everyone',
       posts: [],
-      error: [],
+      error: '',
       loading: false,
     };
   },
   methods: {
-    getPosts: () => {
+    async getPosts() {
       this.loading = true;
-      axios.get('https://dev.to/api/articles')
+      await axios.get('https://dev.to/api/articles')
         .then((response) => {
-          // eslint-disable-next-line no-console
           this.loading = false;
-          this.posts = response.data;
-
-          // this.posts.forEach((post) => {
-          //   console.log('post', post);
-          // });
+          this.posts = response.data.sort((a, b) => a.id - b.id);
+          console.log(this.posts);
         })
         .catch((e) => {
           this.loading = false;
@@ -47,7 +41,7 @@ export default {
         });
     },
   },
-  created() {
+  mounted() {
     return this.getPosts();
   },
 };
