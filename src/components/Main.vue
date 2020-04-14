@@ -20,6 +20,8 @@
 
 <script>
 import axios from 'axios';
+import App from '../constants/app';
+import Strings from '../constants/strings';
 import ArticleCard from './ArticleCard';
 import Grid from './Grid';
 
@@ -31,7 +33,7 @@ export default {
   },
   data() {
     return {
-      loadMoreMessage: 'Load more messages',
+      loadMoreMessage: Strings.LOAD_MORE,
       pageNum: 0,
       posts: [],
       error: '',
@@ -42,7 +44,7 @@ export default {
     async getPosts() {
       this.loading = true;
       this.incrementPage();
-      await axios.get(`https://dev.to/api/articles?page=${this.pageNum}`)
+      await axios.get(`${App.DEV_TO_API_BASE_URL}${App.DEV_TO_API_PAGE_PARAM}${this.pageNum}`)
         .then((response) => {
           this.loading = false;
 

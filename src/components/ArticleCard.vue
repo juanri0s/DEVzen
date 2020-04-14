@@ -1,16 +1,24 @@
 <template>
   <div>
-    <img
+    <a
       v-if=image
-      :src=image
-      alt="replace"
-    >
-    <img
+      :href=image>
+      <fish-image
+        :url=image
+        alt="Dev.to post cover image"
+        style="height: 300px"
+      />
+    </a>
+    <a
       v-else
-      src="../assets/dev_logo.png"
-      alt="replace"
-      width="300"
-      height="300">
+      :href=brandingUrl>
+      <fish-image
+        :url="require('../assets/dev_logo.png')"
+        alt="Dev.to logo"
+        style="height: 300px"
+      />
+    </a>
+
     <a :href=url tabindex="1">
       <h2>{{ title }} </h2>
     </a>
@@ -20,11 +28,16 @@
 </template>
 
 <script>
+import App from '../constants/app';
+
 export default {
   name: 'ArticleCard',
   props: ['image', 'url', 'title', 'author', 'description'],
   data() {
-    return { };
+    return {
+      brandingUrl: App.DEV_TO_BRANDING_URL,
+      logoPath: App.DEV_TO_LOGO_PATH,
+    };
   },
 };
 </script>
