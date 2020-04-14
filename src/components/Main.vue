@@ -1,10 +1,11 @@
 <template>
   <div>
     <h1 v-if="loading"> loading... </h1>
-    <div v-if="errors">
-      <h1> here </h1>
-      <h1> {{ errors }} </h1>
-      <h1 v-for="error in errors" :key="error"> {{ error }} </h1>
+    <h1 v-if="error"> {{ error }} </h1>
+    <p v-if="posts"> {{ posts }} </p>
+    <div>
+      <p> here </p>
+      <article-card :message=message />
     </div>
     <fish-button type="primary" v-on:click="getPosts">load more</fish-button>
   </div>
@@ -12,12 +13,18 @@
 
 <script>
 import axios from 'axios';
+import ArticleCard from './ArticleCard';
 
 export default {
+  name: 'Main',
+  components: {
+    ArticleCard,
+  },
   data() {
     return {
+      message: 'hello everyone',
       posts: [],
-      errors: [],
+      error: [],
       loading: false,
     };
   },
@@ -27,17 +34,20 @@ export default {
       axios.get('https://dev.to/api/articles')
         .then((response) => {
           // eslint-disable-next-line no-console
-          console.log(response);
           this.loading = false;
-          this.posts = response;
+          this.posts = response.data;
+
+          // this.posts.forEach((post) => {
+          //   console.log('post', post);
+          // });
         })
         .catch((e) => {
           this.loading = false;
-          this.errors = e;
+          this.error = e;
         });
     },
   },
-  mounted() {
+  created() {
     return this.getPosts();
   },
 };
