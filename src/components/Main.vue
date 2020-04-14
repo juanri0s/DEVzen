@@ -33,6 +33,7 @@ export default {
         .then((response) => {
           this.loading = false;
           this.posts = response.data.sort((a, b) => a.id - b.id);
+          // eslint-disable-next-line no-console
           console.log(this.posts);
         })
         .catch((e) => {
