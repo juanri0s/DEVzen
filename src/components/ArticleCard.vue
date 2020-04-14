@@ -23,4 +23,8 @@ export default {
 h1, h2 {
   font-weight: normal;
 }
+
+a:hover {
+  text-decoration: underline;
+}
 </style>
