@@ -13,15 +13,14 @@
       </fish-col>
     </fish-row>
 
-    <fish-button
-      type="basic"
-      shape="circle"
-      size="massive"
-      :aria-labelledby=loadMoreMessage
+    <button
       v-if="!loading"
-      v-on:click="getPosts">
-        {{ loadMoreMessage }}
-    </fish-button>
+      v-on:click="getPosts"
+      type="button"
+      class="button round"
+    >
+      {{ loadMoreMessage }}
+    </button>
   </div>
 </template>
 
@@ -103,6 +102,33 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
+}
+
+.button.round {
+  border: none;
+  border-radius: 10em;
+  -webkit-box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.1) inset;
+  box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.1);
+  display: inline-block;
+  line-height: 1.2em;
+  min-height: 1.2em;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: 0.785em 1em;
+  background: #FFF;
+  text-decoration: none;
+}
+
+.button.round:hover {
+  -webkit-box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.3) inset;
+  box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.3)
+}
+
+.button.round:focus {
+  -webkit-box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.3) inset;
+  box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.3)
 }
 
 .content {
