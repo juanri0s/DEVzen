@@ -31,7 +31,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
-    new BundleAnalyzerPlugin({analyzerPort: 4000}),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({

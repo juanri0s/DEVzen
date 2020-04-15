@@ -45,9 +45,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     }
   },
-
   plugins: [
-    new BundleAnalyzerPlugin({analyzerPort: 4000}),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
