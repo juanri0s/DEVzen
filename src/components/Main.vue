@@ -8,7 +8,7 @@
           :image=post.cover_image
           :url=post.url
           :title=post.title
-          :tags=post.tags
+          :tags=post.tag_list
         />
       </fish-col>
     </fish-row>

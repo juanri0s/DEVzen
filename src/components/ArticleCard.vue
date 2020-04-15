@@ -10,7 +10,8 @@
     </a>
     <a
       v-else
-      :href=brandingUrl>
+      :href=brandingUrl
+    >
       <fish-image
         :url="require('../assets/dev_logo.png')"
         alt="Dev.to logo"
@@ -18,10 +19,22 @@
       />
     </a>
 
-    <a :href=url tabindex="0">
+    <a
+      :href=url
+      tabindex="0"
+    >
       <h2>{{ title }}</h2>
     </a>
-    <p>{{ tags }}</p>
+
+    <fish-tag
+      tabindex="0"
+      :index=index
+      v-for="(tag, index) in tags"
+      :key="index + tag"
+      @click="onTagClicked"
+    >
+      {{ tag }}
+    </fish-tag>
   </div>
 </template>
 
@@ -36,6 +49,12 @@ export default {
       brandingUrl: App.DEV_TO_BRANDING_URL,
       logoPath: App.DEV_TO_LOGO_PATH,
     };
+  },
+  methods: {
+    onTagClicked(event) {
+      const tag = this.tags[event];
+      window.location = `https://dev.to/t/${tag}`;
+    },
   },
 };
 </script>
