@@ -1,5 +1,5 @@
 {
-  "name": "dev-grid",
+  "name": "dev-zen",
   "version": "1.0.0",
   "description": "playlist metadata",
   "author": "Juan Rios <juan.rios.28@gmail.com>",
@@ -14,10 +14,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.19.2",
     "fish-ui": "^1.2.8",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
+    "thwack": "^0.1.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

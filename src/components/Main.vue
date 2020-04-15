@@ -19,13 +19,13 @@
       type="button"
       class="button round"
     >
-      {{ loadMoreMessage }}
+      {{ loadMore }}
     </button>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import thwack from 'thwack';
 import App from '../constants/app';
 import Strings from '../constants/strings';
 import ArticleCard from './ArticleCard';
@@ -37,7 +37,7 @@ export default {
   },
   data() {
     return {
-      loadMoreMessage: Strings.LOAD_MORE,
+      loadMore: Strings.LOAD_MORE,
       pageNum: 0,
       posts: [],
       error: '',
@@ -48,7 +48,7 @@ export default {
     async getPosts() {
       this.loading = true;
       this.incrementPage();
-      await axios.get(`${App.DEV_TO_API_BASE_URL}${App.DEV_TO_API_PAGE_PARAM}${this.pageNum}`)
+      await thwack.get(`${App.DEV_TO_API_BASE_URL}${App.DEV_TO_API_PAGE_PARAM}${this.pageNum}`)
         .then((response) => {
           this.loading = false;
 
@@ -57,9 +57,6 @@ export default {
           } else {
             this.posts = response.data;
           }
-
-          // eslint-disable-next-line no-console
-          console.log(this.posts);
         })
         .catch((e) => {
           this.pageNum = this.pageNum !== 0 ? this.decrementPage() : 0;
