@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Strings from '../constants/strings';
+import Strings from '@/constants/strings';
 
 export default {
   name: 'AppFooter',

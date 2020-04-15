@@ -26,9 +26,9 @@
 
 <script>
 import thwack from 'thwack';
-import App from '../constants/app';
-import Strings from '../constants/strings';
-import ArticleCard from './ArticleCard';
+import App from '@/constants/app';
+import Strings from '@/constants/strings';
+import ArticleCard from '@/components/ArticleCard';
 
 export default {
   name: 'Main',

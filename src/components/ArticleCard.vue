@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import App from '../constants/app';
+import App from '@/constants/app';
 
 export default {
   name: 'ArticleCard',
