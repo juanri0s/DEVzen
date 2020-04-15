@@ -14,7 +14,7 @@
     >
       <fish-image
         :url="require('../assets/dev_logo.png')"
-        alt="Dev.to logo"
+        alt="Dev.to logo placeholder"
         style="max-height: 450px; max-width: 200px;"
       />
     </a>
