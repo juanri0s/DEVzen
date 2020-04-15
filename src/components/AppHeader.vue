@@ -28,8 +28,9 @@ export default {
 
 h1.header-titles {
   display: inline;
-  font-size: 5em;
   font-family: Joystick;
+  font-size: 5em;
+  letter-spacing: 4px;
   color: #FFF;
 }
 </style>
