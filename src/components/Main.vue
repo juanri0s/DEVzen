@@ -17,6 +17,7 @@
       type="basic"
       shape="circle"
       size="massive"
+      :aria-labelledby=loadMoreMessage
       v-if="!loading"
       v-on:click="getPosts">
         {{ loadMoreMessage }}

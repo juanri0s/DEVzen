@@ -18,7 +18,7 @@
       />
     </a>
 
-    <a :href=url tabindex="1">
+    <a :href=url tabindex="0">
       <h2>{{ title }}</h2>
     </a>
     <p>{{ tags }}</p>
