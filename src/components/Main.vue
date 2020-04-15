@@ -1,17 +1,23 @@
 <template>
-  <div>
+  <div class="content">
     <fish-loader :active="loading"/>
     <h1 v-if="error"> {{ error }} </h1>
-    <article-card
-      v-for="post in posts" :key="post.id"
-      :image=post.cover_image
-      :url=post.url
-      :title=post.title
-      :author=post.user.name
-      :description=post.description
-    />
+    <fish-row gutter="5" v-for="(posts, index) in chunkedPosts" :key="index">
+      <fish-col span="8" v-for="post in posts" :key="post.id">
+        <article-card
+          :image=post.cover_image
+          :url=post.url
+          :title=post.title
+          :tags=post.tags
+        />
+      </fish-col>
+    </fish-row>
+
     <fish-button
-      type="primary"
+      type="basic"
+      shape="circle"
+      size="massive"
+      v-if="!loading"
       v-on:click="getPosts">
         {{ loadMoreMessage }}
     </fish-button>
@@ -23,13 +29,11 @@ import axios from 'axios';
 import App from '../constants/app';
 import Strings from '../constants/strings';
 import ArticleCard from './ArticleCard';
-import Grid from './Grid';
 
 export default {
   name: 'Main',
   components: {
     ArticleCard,
-    Grid,
   },
   data() {
     return {
@@ -69,9 +73,27 @@ export default {
     decrementPage() {
       this.pageNum = this.pageNum - 1;
     },
+    chunk(array, chunk) {
+      const chunkedArray = [];
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i < array.length; i++) {
+        const last = chunkedArray[chunkedArray.length - 1];
+        if (!last || last.length === chunk) {
+          chunkedArray.push([array[i]]);
+        } else {
+          last.push(array[i]);
+        }
+      }
+      return chunkedArray;
+    },
   },
   mounted() {
     return this.getPosts();
+  },
+  computed: {
+    chunkedPosts() {
+      return this.chunk(this.posts, 3);
+    },
   },
 };
 </script>
@@ -80,5 +102,11 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
+}
+
+.content {
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-bottom: 50px;
 }
 </style>

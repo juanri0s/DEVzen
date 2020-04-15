@@ -1,18 +1,25 @@
 <template>
   <div id="app">
-    <h1> {{ header }} </h1>
+    <app-header :appTitle=appTitle />
     <router-view/>
+    <app-footer/>
   </div>
 </template>
 
 <script>
 import App from './constants/app';
+import AppHeader from './components/AppHeader';
+import AppFooter from './components/AppFooter';
 
 export default {
   name: 'App',
+  components: {
+    AppHeader,
+    AppFooter,
+  },
   data() {
     return {
-      header: App.APP_NAME,
+      appTitle: App.APP_NAME,
     };
   },
 };
@@ -20,11 +27,16 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 20px;
+  background-color: #f9fcfb;
+}
+
+@font-face {
+  font-family: Joystick;
+  src: url('./assets/Joystick.otf');
+  font-weight: normal;
 }
 </style>

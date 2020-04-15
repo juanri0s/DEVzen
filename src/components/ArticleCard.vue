@@ -1,12 +1,11 @@
 <template>
-  <div>
+  <div style="max-height: 600px;">
     <a
       v-if=image
       :href=image>
       <fish-image
         :url=image
         alt="Dev.to post cover image"
-        style="height: 300px"
       />
     </a>
     <a
@@ -15,15 +14,14 @@
       <fish-image
         :url="require('../assets/dev_logo.png')"
         alt="Dev.to logo"
-        style="height: 300px"
+        style="max-height: 450px; max-width: 200px;"
       />
     </a>
 
     <a :href=url tabindex="1">
-      <h2>{{ title }} </h2>
+      <h2>{{ title }}</h2>
     </a>
-    <p>{{ description }}</p>
-    author: {{ author }}
+    <p>{{ tags }}</p>
   </div>
 </template>
 
@@ -32,7 +30,7 @@ import App from '../constants/app';
 
 export default {
   name: 'ArticleCard',
-  props: ['image', 'url', 'title', 'author', 'description'],
+  props: ['image', 'url', 'title', 'tags'],
   data() {
     return {
       brandingUrl: App.DEV_TO_BRANDING_URL,
