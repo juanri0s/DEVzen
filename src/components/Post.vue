@@ -39,15 +39,14 @@
 </template>
 
 <script>
-import { DEV_TO_BRANDING_URL, DEV_TO_LOGO_PATH } from '@/constants/app';
+import App from '@/constants/app';
 
 export default {
   name: 'Post',
   props: ['image', 'url', 'title', 'tags'],
   data() {
     return {
-      brandingUrl: DEV_TO_BRANDING_URL,
-      logoPath: DEV_TO_LOGO_PATH,
+      brandingUrl: App.DEV_TO_BRANDING_URL,
     };
   },
 };
