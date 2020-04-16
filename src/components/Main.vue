@@ -35,7 +35,7 @@
 <script>
 import thwack from 'thwack';
 import App from '@/constants/app';
-import Strings from '@/constants/strings';
+import { LOAD_MORE } from '@/constants/strings';
 import Post from '@/components/Post';
 
 export default {
@@ -45,7 +45,7 @@ export default {
   },
   data() {
     return {
-      loadMore: Strings.LOAD_MORE,
+      loadMore: LOAD_MORE,
       pageNum: 0,
       posts: [],
       error: '',

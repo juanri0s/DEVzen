@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import Strings from '@/constants/strings';
+import { PERSONAL_URL } from '@/constants/strings';
 
 export default {
   name: 'AppFooter',
   data() {
     return {
-      personal: Strings.PERSONAL_URL,
+      personal: PERSONAL_URL,
     };
   },
 };
