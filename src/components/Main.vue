@@ -2,8 +2,16 @@
   <div class="content">
     <fish-loader :active="loading"/>
     <h1 v-if="error"> {{ error }} </h1>
-    <fish-row gutter="5" v-for="(posts, index) in chunkedPosts" :key="index">
-      <fish-col span="8" v-for="post in posts" :key="post.id">
+    <fish-row
+      gutter="5"
+      v-for="(posts, index) in chunkedPosts"
+      :key="index"
+      >
+      <fish-col
+        span="8"
+        v-for="post in posts"
+        :key="post.id"
+        >
         <post
           :image=post.cover_image
           :url=post.url
