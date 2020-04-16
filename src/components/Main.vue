@@ -129,13 +129,12 @@ h1, h2 {
 }
 
 .content {
-  margin-left: 70px;
-  margin-right: 70px;
-  margin-bottom: 50px;
+  margin: 50px 70px;
 }
 
 @media only screen and (max-width: 500px) {
   .content {
+    margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
   }
