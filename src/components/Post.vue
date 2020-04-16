@@ -19,12 +19,13 @@
       />
     </a>
 
-    <a
-      :href=url
-    >
-      <h2>{{ title }}</h2>
-    </a>
-
+    <div class="post-title">
+      <a
+        :href=url
+      >
+        <h2>{{ title }}</h2>
+      </a>
+    </div>
     <fish-tag
       tabindex="0"
       :href="'https://dev.to/t/' + tag"
@@ -41,7 +42,7 @@
 import App from '@/constants/app';
 
 export default {
-  name: 'ArticleCard',
+  name: 'Post',
   props: ['image', 'url', 'title', 'tags'],
   data() {
     return {
@@ -60,5 +61,10 @@ h1, h2 {
 
 a:hover {
   text-decoration: underline;
+}
+
+.post-title {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 </style>

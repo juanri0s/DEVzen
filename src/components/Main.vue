@@ -4,7 +4,7 @@
     <h1 v-if="error"> {{ error }} </h1>
     <fish-row gutter="5" v-for="(posts, index) in chunkedPosts" :key="index">
       <fish-col span="8" v-for="post in posts" :key="post.id">
-        <article-card
+        <post
           :image=post.cover_image
           :url=post.url
           :title=post.title
@@ -28,12 +28,12 @@
 import thwack from 'thwack';
 import App from '@/constants/app';
 import Strings from '@/constants/strings';
-import ArticleCard from '@/components/ArticleCard';
+import Post from '@/components/Post';
 
 export default {
   name: 'Main',
   components: {
-    ArticleCard,
+    Post,
   },
   data() {
     return {
