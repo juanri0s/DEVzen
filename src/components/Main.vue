@@ -133,4 +133,11 @@ h1, h2 {
   margin-right: 70px;
   margin-bottom: 50px;
 }
+
+@media only screen and (max-width: 500px) {
+  .content {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
 </style>
