@@ -74,11 +74,6 @@ export default {
   mounted() {
     return this.getPosts();
   },
-  computed: {
-    chunkedPosts() {
-      return this.chunk(this.posts, 3);
-    },
-  },
 };
 </script>
 

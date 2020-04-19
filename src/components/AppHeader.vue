@@ -9,7 +9,12 @@
 <script>
 export default {
   name: 'AppHeader',
-  props: ['appTitle'],
+  props: {
+    appTitle: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {};
   },
