@@ -2,24 +2,16 @@
   <div class="content">
     <fish-loader :active="loading"/>
     <h1 v-if="error"> {{ error }} </h1>
-    <fish-row
-      gutter="5"
-      v-for="(posts, index) in chunkedPosts"
-      :key="index"
-      >
-      <fish-col
-        span="8"
-        v-for="post in posts"
-        :key="post.id"
-        >
-        <post
+    <div class="wrapper">
+      <post
+          v-for="post in posts"
+          :key="post.id"
           :image=post.cover_image
           :url=post.url
           :title=post.title
           :tags=post.tag_list
         />
-      </fish-col>
-    </fish-row>
+    </div>
 
     <button
       v-if="!loading"
@@ -78,19 +70,6 @@ export default {
     decrementPage() {
       this.pageNum = this.pageNum - 1;
     },
-    chunk(array, chunk) {
-      const chunkedArray = [];
-      // eslint-disable-next-line no-plusplus
-      for (let i = 0; i < array.length; i++) {
-        const last = chunkedArray[chunkedArray.length - 1];
-        if (!last || last.length === chunk) {
-          chunkedArray.push([array[i]]);
-        } else {
-          last.push(array[i]);
-        }
-      }
-      return chunkedArray;
-    },
   },
   mounted() {
     return this.getPosts();
@@ -138,9 +117,32 @@ h1, h2 {
 
 .content {
   margin: 50px 70px;
+  max-width: 100%;
 }
 
-@media only screen and (max-width: 500px) {
+.wrapper {
+  display: grid;
+  max-width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .wrapper {
+    grid-template-columns: none;
+  }
+
   .content {
     margin-top: 30px;
     margin-left: 30px;
