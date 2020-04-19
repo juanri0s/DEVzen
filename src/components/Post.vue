@@ -43,7 +43,24 @@ import App from '@/constants/app';
 
 export default {
   name: 'Post',
-  props: ['image', 'url', 'title', 'tags'],
+  props: {
+    image: {
+      type: String,
+      required: false,
+    },
+    url: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    tags: {
+      type: Array,
+      required: false,
+    },
+  },
   data() {
     return {
       brandingUrl: App.DEV_TO_BRANDING_URL,
